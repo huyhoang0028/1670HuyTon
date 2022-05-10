@@ -1,0 +1,58 @@
+﻿@model asm.Models.ProductMaster
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ProductMaster</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descriptions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)            
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.Image)" style="height:200px; width:200px; margin:10px;" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Available)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Available)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

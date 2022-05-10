@@ -1,0 +1,14 @@
+﻿@model asm.Models.ProductMaster
+@using asm.Models
+@using asm.Controllers
+@{
+    ViewBag.Title = "Search";
+    string name = Request.QueryString["name"];
+
+    List<ProductMaster> result = new List<ProductMaster>();
+}
+
+
+
+<h2>Search</h2>
+

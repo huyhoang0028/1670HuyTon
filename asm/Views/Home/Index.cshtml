@@ -1,0 +1,25 @@
+﻿@model IEnumerable<asm.Models.ProductMaster>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+<h2>Books</h2>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+            {
+                <div class="books col-sm-6 col-sm-4 col-sm-3" id="margin-card">
+                    <div style="background-color: #ffffff" class="card">
+                        @Html.DisplayFor(model => item.ProductName)
+                        <img src="@Url.Content(item.Image)" style="height:200px; width:200px; margin:10px;" />
+                        Price : @Html.DisplayFor(model => item.Price)
+                        <a href="/ShoppingCart/AddToCart/@item.ProductId">
+                            <img src="@Url.Content("~/Content/img/shopping-cart.png")" style="height:25px; width:32px;" />
+                        </a>
+
+                    </div>
+                </div>
+            }
+    </div>
+</div>

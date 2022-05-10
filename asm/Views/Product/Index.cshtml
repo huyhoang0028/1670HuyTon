@@ -1,0 +1,57 @@
+﻿@model IEnumerable<asm.Models.ProductMaster>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table style="background-color: #BA55D3" 	class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descriptions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Available)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td style="background-color: #ffffff">
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td style="background-color: #ffffff">
+                @Html.DisplayFor(modelItem => item.Descriptions)
+            </td>
+            <td style="background-color: #ffffff">
+                <img src="@Url.Content(item.Image)" style="height:100px; width:100px; margin:10px;" />
+            </td>
+            <td style="background-color: #ffffff">
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td style="background-color: #ffffff">
+                @Html.DisplayFor(modelItem => item.Available)
+            </td>
+            <td style="background-color: #ffffff" style="text-align:right;">
+                <a type="button" class="btn btn-primary" href="/Product/Edit/@item.ProductId">Edit</a>
+                <a type="button" class="btn btn-info" href="/Product/Details/@item.ProductId">Details</a>
+                <a type="button" class="btn btn-danger" href="/Product/Delete/@item.ProductId">Delete</a>
+            </td>
+        </tr>
+}
+
+</table>

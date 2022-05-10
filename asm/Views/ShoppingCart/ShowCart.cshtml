@@ -1,0 +1,63 @@
+﻿@model asm.Models.Cart
+
+@{
+    ViewBag.Title = "ShowCart";
+}
+
+<h2>ShowCart</h2>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Image</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Sum</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Items)
+        {
+            double total = Convert.ToDouble(item.ShoppingProduct.Price * item.ShoppingQuatity);
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.ShoppingProduct.ProductName)
+                </td>
+                <td>
+                    <img src="@Url.Content(item.ShoppingProduct.Image)" style="width:100px; margin:10px; height:100px" ) />
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.ShoppingProduct.Price)
+                </td>
+                <td>
+                    @using (Html.BeginForm("UpdateQuatityCart", "ShoppingCart"))
+                    {
+                        <input type="hidden" value="@item.ShoppingProduct.ProductId" name="Product_Id" />
+                        <input type="number" value="@item.ShoppingQuatity" name="Quatity" />
+                        <input type="submit" value="Update Quantity" />
+                    }
+
+                </td>
+
+                <td>
+                    Total : @total
+                </td>
+                <td >
+                    <a class="btn btn-danger" href="/ShoppingCart/RemoveCart/@item.ShoppingProduct.ProductId">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="6" style="text-align:right;">
+                Sum Total: @Model.TotalMoney()
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<a  class="btn btn-primary" href="@Url.Action("Index", "Home")">Continue to shopping</a>
